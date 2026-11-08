@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Товари фірми</title>
+<script language="JavaScript">
+function check()
+{
+var f=document.frm;
+var s;
+var mask;
+
+s=f.txtname.value;
+mask=new RegExp("^[A-Za-zА-Яа-яІіЇїЄє' -]{3,}$");
+if(!mask.test(s)){alert("Назва товару: тільки літери, мінімум 3");f.txtname.focus();return false;}
+
+s=f.txtprice.value;
+mask=new RegExp("^[0-9]+$");
+if(!mask.test(s)){alert("Ціна: тільки цифри");f.txtprice.focus();return false;}
+
+s=f.txtemail.value;
+mask=new RegExp("^[a-z0-9._-]+@[a-z0-9-]+\\.[a-z]{2,}$");
+if(!mask.test(s)){alert("Некоректний email");f.txtemail.focus();return false;}
+
+s=f.txtphone.value;
+mask=new RegExp("^\\+380[0-9]{9}$");
+if(!mask.test(s)){alert("Телефон у форматі +380XXXXXXXXX");f.txtphone.focus();return false;}
+
+s=f.txturl.value;
+mask=new RegExp("^https?://");
+if(!mask.test(s)){alert("Сайт має починатись з http:// або https://");f.txturl.focus();return false;}
+
+if(f.txtmonth.value==""){alert("Оберіть місяць випуску");return false;}
+if(f.txta2.value==""){alert("Введіть опис товару");f.txta2.focus();return false;}
+
+alert("Дані введено правильно");
+return false;
+}
+</script>
+</head>
+
+<body bgcolor="#ffffffff">
+
+<form id="frm" name="frm" action="" autocomplete="off" class="f1" dir="ltr" style="color:black" lang="uk" onsubmit="return check()">
+
+<fieldset>
+<legend lang="uk" title="Інформація про товар" dir="ltr">Товар фірми</legend>
+
+<label id="l1" for="txtname" form="frm" title="Назва">Назва товару:</label>
+<input type="text" name="txtname" style="color:black" maxlength="30" minlength="3" autofocus autocomplete="on" value="Ноутбук"><br><br>
+
+<label id="l2" for="txtprice" form="frm" title="Ціна">Ціна (грн):</label>
+<input type="number" name="txtprice" min="1" step="5" maxlength="7" autocomplete="on" value="25000"><br><br>
+
+<label id="l3" for="selcat" form="frm" title="Категорія">Категорія:</label>
+<select name="selcat">
+<optgroup label="Комп'ютери" style="color:black" class="g1" id="og1">
+<option>Ноутбуки</option>
+<option>Монітори</option>
+</optgroup>
+<optgroup label="Телефони" style="color:black" class="g2" id="og2">
+<option>Смартфони</option>
+<option>Планшети</option>
+</optgroup>
+</select><br><br>
+
+<label id="l4" for="txtemail" form="frm" title="Пошта">Email:</label>
+<input type="email" name="txtemail" multiple autocomplete="on"><br><br>
+
+<label id="l5" for="txtphone" form="frm" title="Телефон">Телефон:</label>
+<input type="tel" name="txtphone" value="+380" maxlength="13"><br><br>
+
+<label id="l6" for="txturl" form="frm" title="Сайт">Сайт:</label>
+<input type="url" name="txturl" value="http://"><br><br>
+
+<label id="l9" for="txtmonth" form="frm" title="Місяць">Місяць випуску:</label>
+<input type="month" name="txtmonth"><br><br>
+
+<input type="checkbox" name="chk" checked alt="В наявності"> В наявності<br><br>
+
+</fieldset>
+<br>
+
+<details>
+<summary title="Додатково" class="s1" id="sm1">Додаткова інформація</summary>
+Гарантія 12 місяців.
+</details>
+<br>
+
+Інформація про фірму:<br>
+<textarea name="txta1" disabled dirname="txta1.dir" lang="uk" title="Інформація" class="t1" style="color:black" rows="2" cols="40">Фірма продає техніку з 2010 року</textarea>
+<br><br>
+
+Опис товару:<br>
+<textarea name="txta2" required dirname="txta2.dir" lang="uk" title="Опис" class="t2" style="color:black" rows="4" cols="40"></textarea>
+<br><br>
+
+
+
+<input type="submit" value="Відправити" formtarget="_blank">
+<button form="frm" type="reset" name="btnreset">Очистити</button>
+<button form="frm" type="button" name="btnoff" disabled>Недоступна</button>
+
+</form>
+
+</body>
+</html>
